@@ -1,0 +1,25 @@
+<div class="message-area" *ngIf="messages.length > 0">
+  <mat-card>
+    <mat-list *ngFor="let message of messages; let i = index">
+      <mat-list-item>
+        <img matListAvatar src="https://api.adorable.io/avatars/285/{{i}}@adorable.io.png"/>
+        <h3 class="header" matLine> Firstname Lastname <span
+          class="tc-grey-500 md-caption">11:24 AM</span></h3>
+        <div class="message" matLine>
+          {{ message }}
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-card>
+</div>
+
+<mat-card fxLayout="column" fxLayoutAlign="center center">
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput placeholder="Type message..." type="text" #input>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="sendMessage(input.value)">Send
+    </button>
+  </mat-card-content>
+</mat-card>
