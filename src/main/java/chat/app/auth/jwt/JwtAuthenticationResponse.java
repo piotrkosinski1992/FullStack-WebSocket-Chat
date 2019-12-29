@@ -1,4 +1,4 @@
-package chat.app.auth.controller;
+package chat.app.auth.jwt;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ public class JwtAuthenticationResponse implements Serializable {
 
   private final String token;
 
-  JwtAuthenticationResponse(String token) {
+  public JwtAuthenticationResponse(String token) {
     this.token = token;
   }
 

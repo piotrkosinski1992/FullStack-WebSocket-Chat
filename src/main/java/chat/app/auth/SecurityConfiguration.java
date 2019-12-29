@@ -14,9 +14,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -46,27 +43,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .addFilter(new JwtAuthorizationFilter(authenticationManager()))
         .authorizeRequests()
         .antMatchers("/h2-console/**").permitAll()
-        .antMatchers("/**").permitAll()
         .antMatchers(HttpMethod.POST, "/auth/**").permitAll()
-        .antMatchers(HttpMethod.GET, "/socket/**").permitAll()
+        .antMatchers("/**").permitAll()
         .anyRequest().authenticated();
     http.headers().frameOptions().disable();
-  }
-
-  @Bean
-  public CorsFilter corsFilter() {
-    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    CorsConfiguration config = new CorsConfiguration();
-    config.setAllowCredentials(true);
-    config.addAllowedOrigin("*");
-    config.addAllowedHeader("*");
-    config.addAllowedMethod("OPTIONS");
-    config.addAllowedMethod("GET");
-    config.addAllowedMethod("POST");
-    config.addAllowedMethod("PUT");
-    config.addAllowedMethod("DELETE");
-    source.registerCorsConfiguration("/**", config);
-    return new CorsFilter(source);
   }
 
   @Bean

@@ -17,5 +17,4 @@ public class LoadBaseEntity {
     return repository.findByCredentialsUsername(username).orElseThrow(
         () -> new RuntimeException("User with given username doesn't exist: " + username));
   }
-
 }

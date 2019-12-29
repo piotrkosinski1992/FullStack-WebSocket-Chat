@@ -1,6 +1,8 @@
-package chat.app.auth.controller;
+package chat.app.controllers;
 
 
+import chat.app.auth.jwt.JwtAuthenticationRequest;
+import chat.app.auth.jwt.JwtAuthenticationResponse;
 import chat.app.auth.jwt.TokenGenerator;
 import java.util.Collection;
 import java.util.Objects;

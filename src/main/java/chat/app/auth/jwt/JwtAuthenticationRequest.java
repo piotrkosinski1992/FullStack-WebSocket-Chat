@@ -1,8 +1,8 @@
-package chat.app.auth.controller;
+package chat.app.auth.jwt;
 
 import java.io.Serializable;
 
-class JwtAuthenticationRequest implements Serializable {
+public class JwtAuthenticationRequest implements Serializable {
 
   private static final long serialVersionUID = -8445943548965154778L;
 
@@ -12,11 +12,11 @@ class JwtAuthenticationRequest implements Serializable {
   private JwtAuthenticationRequest() {
   }
 
-  String getUsername() {
+  public String getUsername() {
     return this.username;
   }
 
-  String getPassword() {
+  public String getPassword() {
     return this.password;
   }
 
